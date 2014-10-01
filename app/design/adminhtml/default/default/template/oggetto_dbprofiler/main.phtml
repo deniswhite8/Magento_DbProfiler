@@ -1,0 +1,69 @@
+<?php
+/**
+ * Oggetto Web extension for Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade
+ * the Oggetto DbProfiler module to newer versions in the future.
+ * If you wish to customize the Oggetto DbProfiler module for your needs
+ * please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category  Oggetto
+ * @package   Oggetto_DbProfiler
+ * @copyright Copyright (C) 2014, Oggetto Web (http://oggettoweb.com)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+/**
+ * Query admin block
+ *
+ * @category    Oggetto
+ * @package     Oggetto_DbProfiler
+ */
+?>
+
+<script>
+    function updateQueries() {
+        new Ajax.Request('<?php echo $this->getAjaxUrl(); ?>', {
+            onSuccess: function (response) {
+                $('queries').update(response.responseText);
+            }
+        });
+    }
+
+    function clearQueries() {
+        new Ajax.Request('<?php echo $this->getClearUrl(); ?>', {
+            onSuccess: function(response) {
+                updateQueries();
+            }
+        });
+    }
+
+    function saveConfig() {
+        $('queries_form').request({
+            onSuccess: function(response) {
+                clearQueries();
+            }
+        });
+    }
+
+    updateQueries();
+</script>
+
+<form id="queries_form" action="<?php echo $this->getSaveConfigUrl() ?>" onsubmit="saveConfig(); return false;">
+    <input required="" placeholder="Module namespace" type="text" name="module_namespace" value="<?php echo $this->getModuleNamespace() ?>">
+    <input required="" placeholder="Table namespace" type="text" name="table_namespace" value="<?php echo $this->getTableNamespace() ?>">
+    <button type="submit">Save</button>
+</form>
+<br>
+
+<button onclick="clearQueries()">Clear</button>
+<button onclick="updateQueries()">Update</button>
+<div id="queries" style="margin-top: 20px"></div>
