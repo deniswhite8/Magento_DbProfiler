@@ -57,7 +57,7 @@ class Oggetto_DbProfiler_Helper_Data
                     Mage::getModel('oggetto_dbprofiler/query')
                         ->setText($queryText)
                         ->setElapsedTime($elapsedTime)
-                        ->setFileLine($moduleNamespace . split($moduleNamespace, $call['file'])[1] . ':' . $call['line'])
+                        ->setFileLine(split(Mage::getBaseDir(), $call['file'])[1] . ':' . $call['line'])
                         ->save();
                     break;
                 }
