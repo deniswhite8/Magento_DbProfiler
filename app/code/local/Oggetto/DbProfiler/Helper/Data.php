@@ -33,13 +33,14 @@ class Oggetto_DbProfiler_Helper_Data
     /**
      * Save quotes info
      *
-     * @param string $queryText   Query text
-     * @param float  $elapsedTime Elapsed time
-     *
+     * @param Zend_Db_Profiler_Query $profilerQuery Profiler query
      * @return void
      */
-    public function log($queryText, $elapsedTime)
+    public function log($profilerQuery)
     {
+        $queryText = $profilerQuery->getQuery();
+        $elapsedTime = $profilerQuery->getElapsedSecs();
+
         try {
             $moduleNamespace = strtolower($this->getModuleNamespace());
             $tablesNamespace = strtolower($this->getTableNamespace());

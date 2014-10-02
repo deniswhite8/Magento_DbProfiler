@@ -60,7 +60,7 @@ class Oggetto_DbProfiler_Adminhtml_Dbprofiler_QueryController
      * @return void
      */
     public function saveConfigAction() {
-        $helper = Mage::helper('oggetto_dbprofiler/data');
+        $helper = Mage::helper('oggetto_dbprofiler');
 
         $helper->setModuleNamespace($this->getRequest()->getParam('module_namespace'));
         $helper->setTableNamespace($this->getRequest()->getParam('table_namespace'));
@@ -76,7 +76,7 @@ class Oggetto_DbProfiler_Adminhtml_Dbprofiler_QueryController
         $result = '';
 
         foreach ($queryCollection as $query) {
-            $result .= '<pre>' . Mage::helper('oggetto_dbprofiler/data')->mysqlDebug($query->getText()) . '</pre>' .
+            $result .= '<pre>' . Mage::helper('oggetto_dbprofiler')->mysqlDebug($query->getText()) . '</pre>' .
                        '<small><i>' . $query->getElapsedTime() . ' seconds</i></small><br>' .
                        '<small>' . $query->getFileLine() . '</small><br><br>';
         }

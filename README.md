@@ -15,7 +15,7 @@ Install
         return self::IGNORED;
     }
 
-    Mage::helper('oggetto_dbprofiler/data')->log($qp->getQuery(), $qp->getElapsedSecs()); // <--- this is
+    Mage::helper('oggetto_dbprofiler')->log($qp); // <--- this is
 
     return self::STORED;
     ```

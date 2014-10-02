@@ -67,7 +67,7 @@ class Oggetto_DbProfiler_Block_Adminhtml_Main
      */
     public function getModuleNamespace()
     {
-        return Mage::helper('oggetto_dbprofiler/data')->getModuleNamespace();
+        return Mage::helper('oggetto_dbprofiler')->getModuleNamespace();
     }
 
     /**
@@ -77,6 +77,6 @@ class Oggetto_DbProfiler_Block_Adminhtml_Main
      */
     public function getTableNamespace()
     {
-        return Mage::helper('oggetto_dbprofiler/data')->getTableNamespace();
+        return Mage::helper('oggetto_dbprofiler')->getTableNamespace();
     }
 }
