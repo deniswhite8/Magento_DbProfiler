@@ -28,24 +28,30 @@
  * @package     Oggetto_DbProfiler
  */
 $this->startSetup();
-$table = $this->getConnection()
-    ->newTable($this->getTable('oggetto_dbprofiler/query'))
-    ->addColumn('entity_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
-        'identity'  => true,
-        'nullable'  => false,
-        'primary'   => true,
-        ), 'Query ID')
-    ->addColumn('text', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-        'nullable'  => false,
-        ), 'Text')
 
-    ->addColumn('elapsed_time', Varien_Db_Ddl_Table::TYPE_DECIMAL, '12,4', array(
-        'nullable'  => false,
-        ), 'Elapsed time')
+try {
+    $table = $this->getConnection()
+        ->newTable($this->getTable('oggetto_dbprofiler/query'))
+        ->addColumn('entity_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+            'identity'  => true,
+            'nullable'  => false,
+            'primary'   => true,
+            ), 'Query ID')
+        ->addColumn('text', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+            'nullable'  => false,
+            ), 'Text')
 
-    ->addColumn('file_line', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
-        'nullable'  => false,
-        ), 'File line')
-    ->setComment('Query Table');
-$this->getConnection()->createTable($table);
+        ->addColumn('elapsed_time', Varien_Db_Ddl_Table::TYPE_DECIMAL, '12,4', array(
+            'nullable'  => false,
+            ), 'Elapsed time')
+
+        ->addColumn('file_line', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+            'nullable'  => false,
+            ), 'File line')
+        ->setComment('Query Table');
+    $this->getConnection()->createTable($table);
+} catch (Exception $e) {
+    Mage::logException($e);
+}
+
 $this->endSetup();
