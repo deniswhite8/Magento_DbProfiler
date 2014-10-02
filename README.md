@@ -19,3 +19,10 @@ Install
 
     return self::STORED;
     ```
+    
+Usage
+=========
+  - In Admin panel select System > Db Profiler.
+  - Input module namespace and table namespace or click Clear button.
+  - Run you module.
+  - Requests will be displayed, if in the call stack which is a file name containing the *module_namespace*, and the text that contains the *`table_namespace*.
