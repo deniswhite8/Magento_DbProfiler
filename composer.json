@@ -1,0 +1,22 @@
+{
+    "name": "oggetto/dbProfiler",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "homepage": "https://github.com/deniswhite8/Magento_DbProfiler",
+    "description": "Magento simple db profiler",
+    "authors": [
+        {
+        	"name": "Denis Belov",
+        	"email": "dbelov@oggettoweb.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "extra": {
+        "map": [
+            ["app/etc/modules/Oggetto_DbProfiler.xml", "app/etc/modules/Oggetto_DbProfiler.xml"],
+            ["app/code/local/Oggetto/DbProfiler", "app/code/local/Oggetto/DbProfiler"],
+        ]
+    }
+}
