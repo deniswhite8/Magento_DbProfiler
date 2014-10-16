@@ -1,5 +1,20 @@
 Install
 =========
+  - Add to your `composer.json`
+    ```
+    "require": {
+        "oggetto/dbProfiler": "*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/deniswhite8/Magento_DbProfiler"
+        }
+    ],
+    "extra": {
+        "magento-root-dir": ".",
+    }
+    ```
 
   - Set `<profiler>true</profiler>` of `<connection>` section in local.xml. 
 
@@ -26,3 +41,8 @@ Usage
   - Input module namespace and table namespace or click Clear button.
   - Run you module.
   - Requests will be displayed, if in the call stack which is a file name containing the *module_namespace*, and the text that contains the *`table_namespace*.
+
+Screenshots
+=========
+
+![Oggetto DbProfiler](https://raw.githubusercontent.com/deniswhite8/imgs/master/profiler/1.png)
